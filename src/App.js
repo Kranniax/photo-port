@@ -3,12 +3,14 @@ import React from "react";
 import "./App.css";
 import About from "./components/About/index.jsx";
 import Nav from "./components/Nav/index.jsx";
+import Gallery from "./components/Gallery/index.jsx";
 
 function App() {
   return (
     <div>
       <Nav></Nav>
       <main>
+        <Gallery></Gallery>
         <About></About>
       </main>
     </div>
