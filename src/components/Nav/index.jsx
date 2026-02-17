@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers.js";
 
 function Nav() {
-  const categories = [
+  const [categories] = useState([
     {
       name: "commercial",
       description:
@@ -13,15 +14,14 @@ function Nav() {
       name: "landscape",
       description: "Fields, farmhouses, waterfalls, and the beauty of nature",
     },
-  ];
+  ]);
 
-  function categorySelected(name) {
-    console.log(`${name} clicked!`);
-  }
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
   return (
     <header>
       <h2>
-        <a  data-testid = "link" href="/">
+        <a data-testid="link" href="/">
           <span role="img" aria-label="camera">
             📷
           </span>{" "}
@@ -31,14 +31,23 @@ function Nav() {
       <nav>
         <ul className="flex-row">
           <li className="mx-2">
-            <a data-testid="about" href="#about">About me</a>
+            <a data-testid="about" href="#about">
+              About me
+            </a>
           </li>
           <li>
             <span>Contact</span>
           </li>
           {categories.map((category) => (
-            <li className="mx-1" key={category.name}>
-              <span onClick={() => categorySelected (category.name)}>{category.name}</span>
+            <li
+              className={`mx-1 ${
+                currentCategory.name === category.name && "navActive"
+              }`}
+              key={category.name}
+            >
+              <span onClick={() => setCurrentCategory(category)}>
+                {capitalizeFirstLetter(category.name)}
+              </span>
             </li>
           ))}
         </ul>
