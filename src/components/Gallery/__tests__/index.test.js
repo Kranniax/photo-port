@@ -20,8 +20,8 @@ describe("Gallery is rendering", () => {
   });
 });
 describe("Title is Portraits", () => {
-  it("renders", () => {
-    const { getByTestId } = render(<Gallery currentCategory={portrait} />);
-    expect(getByTestId("h1tag")).toHaveTextContent("Portraits");
-  });
+ it("renders", () => {
+   render(<Gallery currentCategory={portrait} />);
+   expect(screen.getByTestId("h1tag")).toHaveTextContent("Portraits");
+ });
 });
