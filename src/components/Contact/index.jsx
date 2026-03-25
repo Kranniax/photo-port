@@ -39,7 +39,7 @@ function ContactForm() {
   }
   return (
     <section>
-      <h1>Contact me</h1>
+      <h1 data-testid="contact-heading">Contact me</h1>
       <form id="contact-form" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
@@ -48,6 +48,7 @@ function ContactForm() {
             defaultValue={name}
             onBlur={handleChange}
             name="name"
+            id="name"
           />
         </div>
         <div>
@@ -57,6 +58,7 @@ function ContactForm() {
             name="email"
             defaultValue={email}
             onBlur={handleChange}
+            id="email"
           />
         </div>
         <div>
@@ -66,6 +68,7 @@ function ContactForm() {
             rows="5"
             defaultValue={message}
             onBlur={handleChange}
+            id="message"
           />
         </div>
         {errorMessage && (
@@ -73,7 +76,9 @@ function ContactForm() {
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-        <button type="submit">Submit</button>
+        <button type="submit" data-testid="submit-button">
+          Submit
+        </button>
       </form>
     </section>
   );
